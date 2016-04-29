@@ -6,6 +6,7 @@ package com.anz.flow.test;
 import static org.junit.Assert.assertEquals;
 
 
+
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -55,7 +56,7 @@ public class MQToMQFlowTest extends FlowTest {
 	ObjectMapper objectMapper = new ObjectMapper();
 
 	private static final String TEST_FILE_001 = "MQToMQ.Test001.xml";
-	private static final String applicationName = "MQToMQ";
+	private static final String applicationName = "MQToMQ-App";
 	private static final String flowName = "Main";
 	private static final String injectNodeName ="Read Request";
 	private static final String MESSAGE_FORMAT = "MessageFormat.xml";
@@ -67,7 +68,9 @@ public class MQToMQFlowTest extends FlowTest {
 			ConfigManagerProxyLoggedException, IOException {
 		super.setup();	
 		
-		MessageFlowProxy flowProxy = getIntegrationServerProxy().getMessageFlowByName(flowName, applicationName, null);
+		ExecutionGroupProxy serverProxy = getIntegrationServerProxy();
+		MessageFlowProxy flowProxy = serverProxy.getMessageFlowByName(flowName, applicationName, null);
+		
 		setFlowProxy(flowProxy);
 	}
 	
