@@ -12,4 +12,8 @@
         <plainText>%7B+%22left%22%3A5%2C+%22right%22%3A7+%7D</plainText>
         <MessageHeader backoutCount="0" characterSet="0" encoding="0" expiry="-1" feedback="0" messageFlags="0" messageType="8" messageSequenceNumber="1" offset="0" originalLength="-1" persistence="2" priority="-1" putApplicationType="0" report="0"/>
     </MQInputMessage>
+    <MQInputMessage timestamp="1461910762754" nodeId="FCMComposite_1_8" name="new message 4" id="1461910762754-409">
+        <plainText>%7B+%22left%22%3A5%2C+%22right%22%3A7+%7D</plainText>
+        <MessageHeader backoutCount="0" characterSet="0" encoding="0" expiry="-1" feedback="0" messageFlags="0" messageType="8" messageSequenceNumber="1" offset="0" originalLength="-1" persistence="2" priority="-1" putApplicationType="0" replyToQueueName="OUT" report="0"/>
+    </MQInputMessage>
 </MessagePool>
