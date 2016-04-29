@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="5">
+    <Appenders>
+
+     <File name="MyFile" fileName="/root/logs/app.log">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+     </File>
+     <Async name="Async">
+      <AppenderRef ref="MyFile"/>
+     </Async>
+     
+     <File name="MQToMQFile" fileName="/root/logs/MQToMQ.log">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+     </File>
+     <Async name="MQToMQAsync">
+      <AppenderRef ref="MQToMQFile"/>
+     </Async>
+
+    </Appenders>
+
+    <Loggers>
+     <Root level="error">
+      <AppenderRef ref="Async"/>
+     </Root>
+
+     <logger name="com.anz" level="info" additivity="false">
+      <AppenderRef ref="Async"/>
+     </logger>
+     <logger name="ApplicationLogger" level="info" additivity="false">
+      <AppenderRef ref="Async"/>
+     </logger>
+
+     <logger name="com.anz.MQToMQ" level="info" additivity="false">
+      <AppenderRef ref="MQToMQAsync"/>
+     </logger>
+
+  </Loggers>
+</Configuration>
