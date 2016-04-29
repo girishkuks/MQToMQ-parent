@@ -22,7 +22,7 @@ import com.ibm.broker.plugin.MbMessageAssembly;
 import com.ibm.broker.config.proxy.AttributeConstants;
 
 /**
- * @author sanketsw
+ * @author sanketsw & psamon
  *
  */
 public class SaveModifyHeader extends CommonJavaCompute {
