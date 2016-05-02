@@ -91,12 +91,12 @@ public class MQToMQFlowFailureTest extends FlowTest {
 		injectData();
 		
 		//Test failure subflow outputs
-		testFailureHandlerSubflowOutput();
+		testOutput();
 		
 
 	}
 
-	public void testFailureHandlerSubflowOutput() throws ConfigManagerProxyPropertyNotInitializedException, XPathExpressionException, SAXException, IOException, ParserConfigurationException {	
+	public void testOutput() throws ConfigManagerProxyPropertyNotInitializedException, XPathExpressionException, SAXException, IOException, ParserConfigurationException {	
 		
 		// PreTransform Node
 		List<RecordedTestData> dataList = getTestDataList("MQ Output", true);
@@ -105,7 +105,6 @@ public class MQToMQFlowFailureTest extends FlowTest {
 		ExceptionMessage out = gson.fromJson(json, ExceptionMessage.class);
 
 		assertNotNull(out);
-		//assertEquals("100", out.getStatus().getCode());
 		assertEquals("AU", out.getBroker().getRegion());
 		assertEquals(getBrokerNode().getName(), out.getBroker().getBrokerName());
 
