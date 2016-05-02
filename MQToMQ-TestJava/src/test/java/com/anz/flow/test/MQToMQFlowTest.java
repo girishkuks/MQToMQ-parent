@@ -6,6 +6,7 @@ package com.anz.flow.test;
 import static org.junit.Assert.assertEquals;
 
 
+
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -67,7 +68,9 @@ public class MQToMQFlowTest extends FlowTest {
 			ConfigManagerProxyLoggedException, IOException {
 		super.setup();	
 		
-		MessageFlowProxy flowProxy = getIntegrationServerProxy().getMessageFlowByName(flowName, applicationName, null);
+		ExecutionGroupProxy serverProxy = getIntegrationServerProxy();
+		MessageFlowProxy flowProxy = serverProxy.getMessageFlowByName(flowName, applicationName, null);
+		
 		setFlowProxy(flowProxy);
 	}
 	
