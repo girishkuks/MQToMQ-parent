@@ -4,8 +4,6 @@
 package com.anz.flow.test;
 
 import static org.junit.Assert.assertEquals;
-
-
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -22,25 +20,16 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
-import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
-import com.anz.MQToMQ.transform.pojo.NumbersInput;
-import com.anz.MQToMQ.transform.pojo.Result;
-import com.anz.common.dataaccess.models.iib.Operation;
 import com.anz.common.error.ExceptionMessage;
 import com.anz.common.test.FlowTest;
 import com.anz.common.transform.TransformUtils;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.ibm.broker.config.proxy.ApplicationProxy;
 import com.ibm.broker.config.proxy.AttributeConstants;
-import com.ibm.broker.config.proxy.BrokerProxy;
 import com.ibm.broker.config.proxy.ConfigManagerProxyLoggedException;
 import com.ibm.broker.config.proxy.ConfigManagerProxyPropertyNotInitializedException;
-import com.ibm.broker.config.proxy.ExecutionGroupProxy;
-import com.ibm.broker.config.proxy.FlowProxy;
 import com.ibm.broker.config.proxy.MessageFlowProxy;
 import com.ibm.broker.config.proxy.RecordedTestData;
 
@@ -56,7 +45,7 @@ public class MQToMQFlowFailureTest extends FlowTest {
 	ObjectMapper objectMapper = new ObjectMapper();
 
 	private static final String TEST_FILE_001 = "MQToMQ.FailTest001.xml";
-	private static final String applicationName = "MQToMQ";
+	private static final String applicationName = "MQToMQ-App";
 	private static final String flowName = "Main";
 	private static final String injectNodeName ="Read Request";
 	private static final String MESSAGE_FORMAT = "MessageFormat.xml";
@@ -90,7 +79,6 @@ public class MQToMQFlowFailureTest extends FlowTest {
 
 		
 		// execute flow in synchronous mode
-		@SuppressWarnings("unused")
 		boolean result = getIntegrationServerProxy().injectTestData(injectProps, true);
 		logger.info("Message injected = {}", result);
 		

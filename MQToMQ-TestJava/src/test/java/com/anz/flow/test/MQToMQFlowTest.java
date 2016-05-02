@@ -55,7 +55,7 @@ public class MQToMQFlowTest extends FlowTest {
 	ObjectMapper objectMapper = new ObjectMapper();
 
 	private static final String TEST_FILE_001 = "MQToMQ.Test001.xml";
-	private static final String applicationName = "MQToMQ";
+	private static final String applicationName = "MQToMQ-App";
 	private static final String flowName = "Main";
 	private static final String injectNodeName ="Read Request";
 	private static final String MESSAGE_FORMAT = "MessageFormat.xml";

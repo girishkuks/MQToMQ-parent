@@ -9,29 +9,32 @@
       <AppenderRef ref="MyFile"/>
      </Async>
      
-     <File name="MQToMQFile" fileName="/root/logs/MQToMQ.log">
+     <File name="HttpJsonToHttpJsonFile" fileName="/root/logs/HttpJsonToHttpJson.log">
       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
      </File>
-     <Async name="MQToMQAsync">
-      <AppenderRef ref="MQToMQFile"/>
+     <Async name="HttpJsonToHttpJsonAsync">
+      <AppenderRef ref="HttpJsonToHttpJsonFile"/>
+     </Async>
+     
+     <Console name="Console" target="SYSTEM_OUT">
+	  <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+	 </Console>
+	 <Async name="ConsoleAsync">
+      <AppenderRef ref="Console"/>
      </Async>
 
     </Appenders>
 
     <Loggers>
      <Root level="error">
-      <AppenderRef ref="Async"/>
+      <AppenderRef ref="ConsoleAsync"/>
      </Root>
 
      <logger name="com.anz" level="info" additivity="false">
-      <AppenderRef ref="Async"/>
+      <AppenderRef ref="ConsoleAsync"/>
      </logger>
      <logger name="ApplicationLogger" level="info" additivity="false">
-      <AppenderRef ref="Async"/>
-     </logger>
-
-     <logger name="com.anz.MQToMQ" level="info" additivity="false">
-      <AppenderRef ref="MQToMQAsync"/>
+      <AppenderRef ref="ConsoleAsync"/>
      </logger>
 
   </Loggers>
