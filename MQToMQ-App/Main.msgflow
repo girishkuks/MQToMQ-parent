@@ -2,15 +2,6 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmJavaCompute.msgnode="ComIbmJavaCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:FailureHandler.subflow="FailureHandler.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="Main.msgflow" nsPrefix="Main.msgflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.APP_NAME" name="APP_NAME" lowerBound="1" defaultValueLiteral="MQToMQ">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.JAVA_PROJECT" name="JAVA_PROJECT" lowerBound="1" defaultValueLiteral="MQToMQ-Java">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.TEST_PROJECT" name="TEST_PROJECT" lowerBound="1" defaultValueLiteral="MQToMQ-TestJava">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.providerQueue" name="providerQueue" lowerBound="1" defaultValueLiteral="PROVIDER">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
@@ -68,21 +59,12 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
-      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.APP_NAME">
-        <propertyName xmi:type="utility:TranslatableString" key="Property.APP_NAME" bundleName="Main" pluginId="MQToMQ-App"/>
-        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.JAVA_PROJECT">
-          <propertyName xmi:type="utility:TranslatableString" key="Property.JAVA_PROJECT" bundleName="Main" pluginId="MQToMQ-App"/>
-          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.TEST_PROJECT">
-            <propertyName xmi:type="utility:TranslatableString" key="Property.TEST_PROJECT" bundleName="Main" pluginId="MQToMQ-App"/>
-            <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.providerQueue">
-              <propertyName xmi:type="utility:TranslatableString" key="Property.providerQueue" bundleName="Main" pluginId="MQToMQ-App"/>
-              <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.responseQueue">
-                <propertyName xmi:type="utility:TranslatableString" key="Property.responseQueue" bundleName="Main" pluginId="MQToMQ-App"/>
-                <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.outputQueue">
-                  <propertyName xmi:type="utility:TranslatableString" key="Property.outputQueue" bundleName="Main" pluginId="MQToMQ-App"/>
-                </propertyDescriptor>
-              </propertyDescriptor>
-            </propertyDescriptor>
+      <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.providerQueue">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.providerQueue" bundleName="Main" pluginId="MQToMQ-App"/>
+        <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.responseQueue">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.responseQueue" bundleName="Main" pluginId="MQToMQ-App"/>
+          <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.outputQueue">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.outputQueue" bundleName="Main" pluginId="MQToMQ-App"/>
           </propertyDescriptor>
         </propertyDescriptor>
       </propertyDescriptor>

@@ -58,9 +58,13 @@ public class TransformFailureResponse implements
 		exceptionMessage.setBrokerAndServiceDetails(metadata);
 		exceptionMessage.setStaticProperties();	
 		
-		// Return the error after mapping errorCode from cache/database
-		ErrorStatusCode errorCode = ErrorStatusCodeDomain.getInstance().getErrorCode(errorString);
-				
+		ErrorStatusCode errorCode = null;
+		try {
+			// Return the error after mapping errorCode from cache/database
+			errorCode = ErrorStatusCodeDomain.getInstance().getErrorCode(errorString);
+		} catch(Exception e ) {
+			logger.throwing(e);
+		}
 		// If error code cannot be mapped, then return the original error
 		if (errorCode != null) {
 			exceptionMessage.setStatus(errorCode);
