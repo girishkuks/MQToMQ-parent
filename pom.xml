@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.anz.api</groupId>
-	<artifactId>MQToMQ-Parent</artifactId>
+	<artifactId>MQToMQ-parent</artifactId>
 	<version>0.0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
@@ -33,8 +33,8 @@
 
 
 	<modules>
-		<module>MQToMQ-Java</module>
-		<module>MQToMQ-TestJava</module>
+		<module>MQToMQ-java</module>
+		<module>MQToMQ-testjava</module>
 		<module>MQToMQ</module>
 	</modules>
 	<build>
