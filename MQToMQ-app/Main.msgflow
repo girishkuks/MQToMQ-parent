@@ -11,6 +11,9 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.OUTPUT_QUEUE" name="OUTPUT_QUEUE" lowerBound="1" defaultValueLiteral="MQToMQ.OUT">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.RESPONSE_QUEUE_MGR" name="RESPONSE_QUEUE_MGR" lowerBound="1" defaultValueLiteral="QMGR">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="Main" bundleName="Main" pluginId="MQToMQ-app"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj16/Main.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj30/Main.gif"/>
@@ -65,6 +68,9 @@
           <propertyName xmi:type="utility:TranslatableString" key="Property.RESPONSE_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
           <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.OUTPUT_QUEUE">
             <propertyName xmi:type="utility:TranslatableString" key="Property.OUTPUT_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
+            <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.RESPONSE_QUEUE_MGR">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.RESPONSE_QUEUE_MGR" bundleName="Main" pluginId="MQToMQ-app"/>
+            </propertyDescriptor>
           </propertyDescriptor>
         </propertyDescriptor>
       </propertyDescriptor>
