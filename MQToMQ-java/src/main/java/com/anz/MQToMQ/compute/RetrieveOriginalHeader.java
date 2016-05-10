@@ -46,16 +46,29 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 		MbElement replyToQ = root.getFirstElementByPath("/MQMD/ReplyToQ");
 		logger.info("provider {} = {}", replyToQ.getName(), replyToQ.getValue());
 		
-		// Create Local Environment Output Queue element
-		MbElement outputQ = outAssembly.getLocalEnvironment().getRootElement()
+		// Get Reply To Queue Manager
+		MbElement replyToQMgr = root.getFirstElementByPath("/MQMD/ReplyToQMgr");
+		logger.info("provider {} = {}", replyToQMgr.getName(), replyToQMgr.getValue());	
+		
+		// Create Local Environment Destination Data Element
+		MbElement destinationData = outAssembly.getLocalEnvironment().getRootElement()
 				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "Destination","")
 				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "MQ", "")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "DestinationData", "")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueName", "");
+				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "DestinationData", "");
+				
+		// Create Local Environment Output Queue element
+		MbElement outputQ = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueName", "");
 		
-		// Set Output Queue
+		// Create Local Environment Output Queue Manager element
+		MbElement outputQMgr = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueManagerName", "");
+		
+		// Set Provider Queue Name to User Defined Property: OUTPUT_QUEUE
 		outputQ.setValue((String) getUserDefinedAttribute("OUTPUT_QUEUE"));
-		logger.info("output {} = {}", outputQ.getName(), outputQ.getValue());
+		logger.info("{} = {}", outputQ.getName(), outputQ.getValue());
+		
+		// Set Provider Queue Manager Name to User Defined Property: OUTPUT_QUEUE_MGR
+		outputQMgr.setValue((String) getUserDefinedAttribute("OUTPUT_QUEUE_MGR"));
+		logger.info("{} = {}", outputQMgr.getName(), outputQMgr.getValue());
 		
 		// Retrieve Original Reply To Queue from cache
 		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache("MQHeaderCache", correlId.getValueAsString());
@@ -69,6 +82,21 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 			//TODO: Error statements
 			logger.info("ERROR: original Reply To Q not found in cache");
 		}
+		
+		// Retrieve Original Reply To Queue Manager from cache
+		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache("MQHeaderCache", correlId.getValueAsString().concat("Mgr"));
+		
+		// If Original Reply To Queue found in cache, set as Reply To Queue
+		if(originalReplyToQMgr != null){
+			logger.info("Original Reply To Queue Manager retrieved from cache");
+			replyToQMgr.setValue(originalReplyToQMgr);
+			logger.info("Original Reply To Queue Manager = {}", replyToQMgr.getValueAsString());
+		} else {
+			//TODO: Error statements
+			logger.info("ERROR: original Reply To Q Mgr not found in cache");
+		}
+		
+		
 	}
 
 	@Override

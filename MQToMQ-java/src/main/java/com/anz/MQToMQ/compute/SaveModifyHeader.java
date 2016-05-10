@@ -66,26 +66,35 @@ public class SaveModifyHeader extends CommonJavaCompute {
 		logger.info("Orgininal ReplyToQ stored in cache");
 		
 		// Store Original Reply To Queue Manager in cache
-		CacheHandlerFactory.getInstance().updateCache("MqHeaderCache", correlId.getValueAsString().concat("MGR"), replyToQMgr.getValueAsString());
+		CacheHandlerFactory.getInstance().updateCache("MqHeaderCache", correlId.getValueAsString().concat("Mgr"), replyToQMgr.getValueAsString());
 		logger.info("Orgininal ReplyToQMgr stored in cache");
-
-		// Create Local Environment Provider Queue element
-		MbElement providerQ = outAssembly.getLocalEnvironment().getRootElement()
+		
+		// Create Local Environment Destination Data Element
+		MbElement destinationData = outAssembly.getLocalEnvironment().getRootElement()
 				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "Destination","")
 				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "MQ", "")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "DestinationData", "")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueName", "");
+				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "DestinationData", "");
+				
+		// Create Local Environment Provider Queue element
+		MbElement providerQ = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueName", "");
+		
+		// Create Local Environment Provider Queue Manager element
+		MbElement providerQMgr = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueManagerName", "");
 		
 		// Set Provider Queue Name to User Defined Property: PROVIDER_QUEUE
 		providerQ.setValue((String) getUserDefinedAttribute("PROVIDER_QUEUE"));
 		logger.info("{} = {}", providerQ.getName(), providerQ.getValue());
 		
-		// Set Reply To Queue name to user defined property: RESPONSE_QUEUE
-		replyToQ.setValue((String) getUserDefinedAttribute("RESPONSE_QUEUE"));
+		// Set Provider Queue Manager Name to User Defined Property: PROVIDER_QUEUE_MGR
+		providerQMgr.setValue((String) getUserDefinedAttribute("PROVIDER_QUEUE_MGR"));
+		logger.info("{} = {}", providerQMgr.getName(), providerQMgr.getValue());
+		
+		// Set Reply To Queue name to user defined property: REPLY_QUEUE
+		replyToQ.setValue((String) getUserDefinedAttribute("REPLY_QUEUE"));
 		logger.info("provider {} = {}", replyToQ.getName(), replyToQ.getValue());	
 		
-		// Set Reply To Queue Manager name to user defined property: RESPONSE_QUEUE_MGR
-		replyToQMgr.setValue((String) getUserDefinedAttribute("RESPONSE_QUEUE_MGR"));
+		// Set Reply To Queue Manager name to user defined property: REPLY_QUEUE_MGR
+		replyToQMgr.setValue((String) getUserDefinedAttribute("REPLY_QUEUE_MGR"));
 		logger.info("provider {} = {}", replyToQMgr.getName(), replyToQMgr.getValue());
 	}
 
