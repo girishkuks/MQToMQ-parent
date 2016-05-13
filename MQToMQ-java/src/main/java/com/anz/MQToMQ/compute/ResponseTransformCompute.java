@@ -4,6 +4,7 @@
 package com.anz.MQToMQ.compute;
 
 import com.anz.MQToMQ.transform.PostTransformBLSample;
+import com.anz.common.compute.ComputeInfo;
 import com.anz.common.compute.impl.CommonBlobTransformCompute;
 import com.anz.common.transform.ITransformer;
 import com.ibm.broker.plugin.MbMessageAssembly;
@@ -23,9 +24,12 @@ public class ResponseTransformCompute extends CommonBlobTransformCompute {
 	}
 
 	@Override
-	public void saveUserProvidedProperties(MbMessageAssembly outAssembly) {
+	public void prepareForTransformation(ComputeInfo metadata,
+			MbMessageAssembly inAssembly, MbMessageAssembly outAssembly) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

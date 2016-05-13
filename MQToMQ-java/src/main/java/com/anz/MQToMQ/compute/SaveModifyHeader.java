@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.anz.MQToMQ.transform.PreTransformBLSample;
 
 import com.anz.common.cache.impl.CacheHandlerFactory;
+import com.anz.common.compute.ComputeInfo;
 import com.anz.common.compute.TransformType;
 import com.anz.common.compute.impl.CommonJavaCompute;
 import com.anz.common.transform.ITransformer;
@@ -102,5 +103,12 @@ public class SaveModifyHeader extends CommonJavaCompute {
 	public TransformType getTransformationType() {
 		// TODO Auto-generated method stub
 		return TransformType.MQ_MQ;
+	}
+
+	@Override
+	public void prepareForTransformation(ComputeInfo metadata,
+			MbMessageAssembly inAssembly, MbMessageAssembly outAssembly) {
+		// TODO Auto-generated method stub
+		
 	}
 }

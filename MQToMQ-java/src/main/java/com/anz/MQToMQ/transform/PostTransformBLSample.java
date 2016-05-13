@@ -40,9 +40,7 @@ public class PostTransformBLSample implements ITransformer<String, String> {
 				NumbersInput.class);
 		logger.info("Inside Java Compute");	
 		if(json == null){
-			//ifx code here from cache
-			logger.info("json is null: MQ Application returned error.");
-			IFXCodeDomain.getInstance().getErrorCode("500");
+			throw new Exception("Expected response is NumbersFormat. Invalid message detected:" + inputJson);
 		} else {
 			// do the response tranform and return
 			logger.info("json not null: MQ Application successful");
