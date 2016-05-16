@@ -40,6 +40,9 @@ public class TransformFailureResponse implements
 		MbMessage outMessage = outAssembly.getMessage();
 		String messageString = ComputeUtils.getStringFromBlob(outMessage);
 		
+		//TODO ANZ
+		// Mapping the exception to error status code
+		
 		String errorString = null;
 		if(exceptionText == null && messageString== null) {
 			// This is a timeout on MQ
