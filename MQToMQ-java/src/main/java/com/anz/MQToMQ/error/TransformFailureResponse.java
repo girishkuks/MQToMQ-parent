@@ -8,6 +8,7 @@ import java.util.Calendar;
 import org.apache.logging.log4j.Logger;
 
 import com.anz.common.compute.ComputeInfo;
+import com.anz.common.compute.OutputTarget;
 import com.anz.common.compute.impl.ComputeUtils;
 import com.anz.common.dataaccess.models.iib.ErrorStatusCode;
 import com.anz.common.domain.ErrorStatusCodeDomain;
@@ -49,6 +50,14 @@ public class TransformFailureResponse implements
 			errorString = ErrorStatusCode.TimeoutException;
 		} else {	
 			errorString = ErrorStatusCode.InternalException;
+		}
+		
+		// Create condition to route certain errors to Error Queue
+		if(false){
+			
+			// If condition met Set output terminal to alternate
+			metadata.setOutputTarget(OutputTarget.ALTERNATE);
+			
 		}
 
 		// Log the input blob
