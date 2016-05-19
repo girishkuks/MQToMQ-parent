@@ -51,7 +51,7 @@
           </eventXMLDoc>
         </monitorEvents>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="765,58" destinationMode="list" transactionMode="yes" persistenceMode="yes" queueManagerName="" validateMaster="none">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="765,58" destinationMode="list" queueManagerName="" validateMaster="none">
         <translation xmi:type="utility:ConstantString" string="Propagate Request"/>
         <shortDescription xmi:type="utility:ConstantString" string="Output message onto service input queue"/>
         <monitorEvents eventSourceDescription="Out terminal" eventSourceName="Propagate Request.terminal.out" eventIdentity="Propagate Request.OutTerminal">

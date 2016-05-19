@@ -12,6 +12,7 @@ import com.anz.common.cache.impl.CacheHandlerFactory;
 import com.anz.common.compute.ComputeInfo;
 import com.anz.common.compute.TransformType;
 import com.anz.common.compute.impl.CommonJavaCompute;
+import com.anz.common.compute.impl.ComputeUtils;
 import com.anz.common.transform.ITransformer;
 import com.ibm.broker.plugin.MbElement;
 import com.ibm.broker.plugin.MbMessageAssembly;
@@ -51,50 +52,31 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 		MbElement replyToQMgr = root.getFirstElementByPath("/MQMD/ReplyToQMgr");
 		logger.info("provider {} = {}", replyToQMgr.getName(), replyToQMgr.getValue());	
 		
-		// Create Local Environment Destination Data Element
-		MbElement destinationData = outAssembly.getLocalEnvironment().getRootElement()
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "Destination","")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "MQ", "")
-				.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "DestinationData", "");
-				
-		// Create Local Environment Output Queue element
-		MbElement outputQ = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueName", "");
-		
-		// Create Local Environment Output Queue Manager element
-		MbElement outputQMgr = destinationData.createElementAsFirstChild(MbElement.TYPE_NAME_VALUE, "queueManagerName", "");
-		
-		// Set Provider Queue Name to User Defined Property: OUTPUT_QUEUE
-		outputQ.setValue((String) getUserDefinedAttribute("OUTPUT_QUEUE"));
-		logger.info("{} = {}", outputQ.getName(), outputQ.getValue());
-		
-		// Set Provider Queue Manager Name to User Defined Property: OUTPUT_QUEUE_MGR
-		outputQMgr.setValue((String) getUserDefinedAttribute("OUTPUT_QUEUE_MGR"));
-		logger.info("{} = {}", outputQMgr.getName(), outputQMgr.getValue());
+		ComputeUtils.setElementInTree((String) getUserDefinedAttribute("OUTPUT_QUEUE"), outAssembly.getLocalEnvironment(), "Destination","MQ","DestinationData", "queueName" );
+		ComputeUtils.setElementInTree((String) getUserDefinedAttribute("OUTPUT_QUEUE_MGR"), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
 		
 		// Retrieve Original Reply To Queue from cache
-		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache("MQHeaderCache", correlId.getValueAsString());
-		
+		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache("MqHeaderCache", correlId.getValueAsString());		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQ != null){
-			logger.info("Original Reply To Queue retrieved from cache");
 			replyToQ.setValue(originalReplyToQ);
+			ComputeUtils.setElementInTree(replyToQ.getValueAsString(), outAssembly.getLocalEnvironment(), "Destination","MQ","DestinationData", "queueName" );
 			logger.info("Original Reply To Queue = {}", replyToQ.getValueAsString());
 		} else {
 			//TODO: Error statements
-			logger.info("ERROR: original Reply To Q not found in cache");
+			logger.warn("ERROR: original Reply To Q not found in cache. Output queue set to default OUTPUT_QUEUE");
 		}
 		
 		// Retrieve Original Reply To Queue Manager from cache
-		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache("MQHeaderCache", correlId.getValueAsString().concat("Mgr"));
-		
+		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache("MqHeaderCache", correlId.getValueAsString().concat("Mgr"));		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQMgr != null){
-			logger.info("Original Reply To Queue Manager retrieved from cache");
 			replyToQMgr.setValue(originalReplyToQMgr);
+			ComputeUtils.setElementInTree(replyToQMgr.getValueAsString(), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
 			logger.info("Original Reply To Queue Manager = {}", replyToQMgr.getValueAsString());
 		} else {
 			//TODO: Error statements
-			logger.info("ERROR: original Reply To Q Mgr not found in cache");
+			logger.warn("ERROR: original Reply To Q Mgr not found in cache. Output queue mgr set to default OUTPUT_QUEUE_MGR");
 		}
 		
 		
