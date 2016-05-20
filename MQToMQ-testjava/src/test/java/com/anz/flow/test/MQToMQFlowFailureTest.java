@@ -67,8 +67,8 @@ public class MQToMQFlowFailureTest extends FlowTest {
 		// load test data from file
 		String message = IOUtils.toString(MQToMQFlowTest.class.getResourceAsStream(TEST_FILE_001));
 		//String jsonBlob = TransformUtils.getBlob(message);
-		//String messageFormat = IOUtils.toString(MQToMQFlowTest.class.getResourceAsStream(MESSAGE_FORMAT));
-		//message = messageFormat.replace("MESSAGE_FORMAT", jsonBlob);
+		String messageFormat = IOUtils.toString(MQToMQFlowTest.class.getResourceAsStream(MESSAGE_FORMAT));
+		message = messageFormat.replace("MESSAGE_FORMAT", message);
 		
 		Properties injectProps = new Properties();
 		injectProps.setProperty(AttributeConstants.DATA_INJECTION_APPLICATION_LABEL, applicationName); 		
@@ -99,7 +99,7 @@ public class MQToMQFlowFailureTest extends FlowTest {
 	public void testOutput() throws ConfigManagerProxyPropertyNotInitializedException, XPathExpressionException, SAXException, IOException, ParserConfigurationException {	
 		
 		// PreTransform Node
-		List<RecordedTestData> dataList = getTestDataList("MQ Output", true);
+		List<RecordedTestData> dataList = getTestDataList("FailureHandlerWithErrorQueue");
 				
 		String json = getNodeOutputJsonStringFromBlob(dataList.get(0));
 		ExceptionMessage out = gson.fromJson(json, ExceptionMessage.class);

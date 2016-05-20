@@ -8,7 +8,7 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT_QUEUE_MGR" name="ALERT_QUEUE_MGR" defaultValueLiteral="QMGR">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT" name="ALERT" defaultValueLiteral="TRUE">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT" name="ALERT" defaultValueLiteral="FALSE">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.FIRE_AND_FORGET" name="FIRE_AND_FORGET" defaultValueLiteral="FALSE">
