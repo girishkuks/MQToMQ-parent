@@ -3,7 +3,6 @@
 	<name>MQToMQ-lib</name>
 	<comment></comment>
 	<projects>
-		<project>anz-iib-commons-lib</project>
 		<project>MQToMQ-java</project>
 	</projects>
 	<buildSpec>
@@ -117,6 +116,5 @@
 		<nature>com.ibm.etools.msgbroker.tooling.libraryNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.messageBrokerProjectNature</nature>
 		<nature>com.ibm.etools.msgbroker.tooling.sharedLibraryNature</nature>
-		<nature>com.ibm.etools.mft.bar.ext.barnature</nature>
 	</natures>
 </projectDescription>

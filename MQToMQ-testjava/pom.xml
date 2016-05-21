@@ -27,11 +27,6 @@
 			<version>2.7.3</version>
 		</dependency>
 		<dependency>
-			<groupId>com.anz</groupId>
-			<artifactId>anz-iib-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>com.anz.api</groupId>
 			<artifactId>MQToMQ-java</artifactId>
 			<version>0.0.0.1-SNAPSHOT</version>
