@@ -56,7 +56,7 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 		ComputeUtils.setElementInTree((String) getUserDefinedAttribute("OUTPUT_QUEUE_MGR"), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
 		
 		// Retrieve Original Reply To Queue from cache
-		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache("MqHeaderCache", correlId.getValueAsString());		
+		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString());		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQ != null){
 			replyToQ.setValue(originalReplyToQ);
@@ -68,7 +68,7 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 		}
 		
 		// Retrieve Original Reply To Queue Manager from cache
-		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache("MqHeaderCache", correlId.getValueAsString().concat("Mgr"));		
+		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString().concat("Mgr"));		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQMgr != null){
 			replyToQMgr.setValue(originalReplyToQMgr);

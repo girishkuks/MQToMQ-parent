@@ -63,11 +63,11 @@ public class SaveModifyHeader extends CommonJavaCompute {
 		logger.info("New CorrelId = {}", correlId.getValueAsString());
 		
 		// Store Original Reply To Queue in cache
-		CacheHandlerFactory.getInstance().updateCache("MqHeaderCache", correlId.getValueAsString(), replyToQ.getValueAsString());
+		CacheHandlerFactory.getInstance().updateCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString(), replyToQ.getValueAsString());
 		logger.info("Orgininal ReplyToQ stored in cache");
 		
 		// Store Original Reply To Queue Manager in cache
-		CacheHandlerFactory.getInstance().updateCache("MqHeaderCache", correlId.getValueAsString().concat("Mgr"), replyToQMgr.getValueAsString());
+		CacheHandlerFactory.getInstance().updateCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString().concat("Mgr"), replyToQMgr.getValueAsString());
 		logger.info("Orgininal ReplyToQMgr stored in cache");
 		
 		// Create Local Environment Destination Data Element
