@@ -9,16 +9,16 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.REPLY_QUEUE" name="REPLY_QUEUE" lowerBound="1" defaultValueLiteral="MQToMQ.RESPONSE">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.OUTPUT_QUEUE" name="OUTPUT_QUEUE" lowerBound="1" defaultValueLiteral="OUT">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.OUTPUT_QUEUE" name="OUTPUT_QUEUE" lowerBound="1" defaultValueLiteral="MQToMQ.OUT">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.REPLY_QUEUE_MGR" name="REPLY_QUEUE_MGR" lowerBound="1" defaultValueLiteral="QMGR">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.REPLY_QUEUE_MGR" name="REPLY_QUEUE_MGR" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.OUTPUT_QUEUE_MGR" name="OUTPUT_QUEUE_MGR" lowerBound="1" defaultValueLiteral="QMGR">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.OUTPUT_QUEUE_MGR" name="OUTPUT_QUEUE_MGR" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.PROVIDER_QUEUE_MGR" name="PROVIDER_QUEUE_MGR" lowerBound="1" defaultValueLiteral="QMGR">
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.PROVIDER_QUEUE_MGR" name="PROVIDER_QUEUE_MGR" defaultValueLiteral="">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="Main" bundleName="Main" pluginId="MQToMQ-app"/>
