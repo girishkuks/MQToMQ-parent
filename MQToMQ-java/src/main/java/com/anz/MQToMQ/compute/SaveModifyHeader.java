@@ -50,25 +50,45 @@ public class SaveModifyHeader extends CommonJavaCompute {
 		MbElement correlId = root.getFirstElementByPath("/MQMD/CorrelId");
 		logger.info("{} = {}", correlId.getName(), correlId.getValueAsString());
 		
-		// Get Reply To Queue 
-		MbElement replyToQ = root.getFirstElementByPath("/MQMD/ReplyToQ");
-		logger.info("Original ReplyToQ = {}", replyToQ.getValueAsString());
-		
-		// Get Reply To Queue Manager
-		MbElement replyToQMgr = root.getFirstElementByPath("/MQMD/ReplyToQMgr");
-		logger.info("Original ReplyToQMgr = {}", replyToQMgr.getValueAsString());
-				
 		// Set value of Correlation ID to the Message ID
 		correlId.setValue(msgId.getValue());
 		logger.info("New CorrelId = {}", correlId.getValueAsString());
+		
+		
+		
+		// Get Reply To Queue 
+		MbElement replyToQ = root.getFirstElementByPath("/MQMD/ReplyToQ");
+		
+		if(replyToQ.getValue() == null || replyToQ.getValueAsString().trim().isEmpty()){
+			
+			logger.info("replyToQ MQMD field is empty, set to OUTPUT_QUEUE.");
+			replyToQ.setValue(getUserDefinedAttribute("OUTPUT_QUEUE"));
+			
+		}
+		logger.info("replyToQ MQMD field not empty.");
+		logger.info("Original ReplyToQ ={}...", replyToQ.getValueAsString());
 		
 		// Store Original Reply To Queue in cache
 		CacheHandlerFactory.getInstance().updateCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString(), replyToQ.getValueAsString());
 		logger.info("Orgininal ReplyToQ stored in cache");
 		
+		
+		// Get Reply To Queue Manager
+		MbElement replyToQMgr = root.getFirstElementByPath("/MQMD/ReplyToQMgr");
+		
+		if(replyToQMgr.getValue() == null || replyToQMgr.getValueAsString().trim().isEmpty()){
+			
+			logger.info("replyToQMgr MQMD field is empty, set to OUTPUT_QUEUE_MGR");
+			replyToQMgr.setValue(getUserDefinedAttribute("OUTPUT_QUEUE_MGR"));
+			
+		}
+		logger.info("Original ReplyToQMgr = {}", replyToQMgr.getValueAsString());
+				
 		// Store Original Reply To Queue Manager in cache
 		CacheHandlerFactory.getInstance().updateCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString().concat("Mgr"), replyToQMgr.getValueAsString());
 		logger.info("Orgininal ReplyToQMgr stored in cache");
+		
+		
 		
 		// Create Local Environment Destination Data Element
 		MbElement destinationData = outAssembly.getLocalEnvironment().getRootElement()

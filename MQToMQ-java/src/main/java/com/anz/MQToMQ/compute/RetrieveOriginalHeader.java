@@ -4,6 +4,7 @@
 package com.anz.MQToMQ.compute;
 
 import org.apache.logging.log4j.LogManager;
+
 import org.apache.logging.log4j.Logger;
 
 import com.anz.MQToMQ.transform.PreTransformBLSample;
@@ -33,8 +34,6 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 	public void execute(MbMessageAssembly inAssembly,
 			MbMessageAssembly outAssembly) throws Exception {
 		
-		//RETRIEVE ORIGINAL REPLY TO QUEUE AND SET OUTPUT QUEUE
-		
 		logger.info("RetrieveOriginalHeader:execute()");
 		
 		// Get message root element
@@ -52,31 +51,37 @@ public class RetrieveOriginalHeader extends CommonJavaCompute {
 		MbElement replyToQMgr = root.getFirstElementByPath("/MQMD/ReplyToQMgr");
 		logger.info("provider {} = {}", replyToQMgr.getName(), replyToQMgr.getValue());	
 		
-		ComputeUtils.setElementInTree((String) getUserDefinedAttribute("OUTPUT_QUEUE"), outAssembly.getLocalEnvironment(), "Destination","MQ","DestinationData", "queueName" );
-		ComputeUtils.setElementInTree((String) getUserDefinedAttribute("OUTPUT_QUEUE_MGR"), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
-		
 		// Retrieve Original Reply To Queue from cache
-		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString());		
+		String originalReplyToQ = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString());	
+		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQ != null){
+			
 			replyToQ.setValue(originalReplyToQ);
-			ComputeUtils.setElementInTree(replyToQ.getValueAsString(), outAssembly.getLocalEnvironment(), "Destination","MQ","DestinationData", "queueName" );
-			logger.info("Original Reply To Queue = {}", replyToQ.getValueAsString());
+			logger.info("Original ReplyToQ found in cache: Reply To Queue = {}", replyToQ.getValueAsString());
+			
 		} else {
-			//TODO: Error statements
+			
+			replyToQ.setValue(getUserDefinedAttribute("OUTPUT_QUEUE"));
 			logger.warn("ERROR: original Reply To Q not found in cache. Output queue set to default OUTPUT_QUEUE");
+			
 		}
 		
 		// Retrieve Original Reply To Queue Manager from cache
-		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString().concat("Mgr"));		
+		String originalReplyToQMgr = CacheHandlerFactory.getInstance().lookupCache(CacheHandlerFactory.MessageHeaderCache, correlId.getValueAsString().concat("Mgr"));	
+		
 		// If Original Reply To Queue found in cache, set as Reply To Queue
 		if(originalReplyToQMgr != null){
+			
 			replyToQMgr.setValue(originalReplyToQMgr);
-			ComputeUtils.setElementInTree(replyToQMgr.getValueAsString(), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
+			//ComputeUtils.setElementInTree(replyToQMgr.getValueAsString(), outAssembly.getLocalEnvironment(), "Destination", "MQ", "DestinationData", "queueManagerName");
 			logger.info("Original Reply To Queue Manager = {}", replyToQMgr.getValueAsString());
+			
 		} else {
-			//TODO: Error statements
+			
+			replyToQMgr.setValue(getUserDefinedAttribute("OUTPUT_QUEUE_MGR"));
 			logger.warn("ERROR: original Reply To Q Mgr not found in cache. Output queue mgr set to default OUTPUT_QUEUE_MGR");
+			
 		}
 		
 		
