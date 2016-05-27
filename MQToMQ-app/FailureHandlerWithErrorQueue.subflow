@@ -2,21 +2,6 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmJavaCompute.msgnode="ComIbmJavaCompute.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:mbmonitor="http://www.ibm.com/wbi/2008/eflow_mbmonitor" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="FailureHandlerWithErrorQueue.subflow" nsPrefix="FailureHandlerWithErrorQueue.subflow">
   <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT_QUEUE" name="ALERT_QUEUE" defaultValueLiteral="ALERT">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT_QUEUE_MGR" name="ALERT_QUEUE_MGR" defaultValueLiteral="QMGR">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT" name="ALERT" defaultValueLiteral="FALSE">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.FIRE_AND_FORGET" name="FIRE_AND_FORGET" defaultValueLiteral="FALSE">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.INCIDENT_AREA" name="INCIDENT_AREA" defaultValueLiteral="GAMS">
-      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="FailureHandlerWithErrorQueue" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj16/FailureHandlerWithErrorQueue.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj30/FailureHandlerWithErrorQueue.gif"/>
@@ -48,23 +33,7 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.alternate" targetTerminalName="InTerminal.in"/>
     </composition>
-    <propertyOrganizer>
-      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT_QUEUE">
-        <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT_QUEUE" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
-        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT_QUEUE_MGR">
-          <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT_QUEUE_MGR" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
-          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT">
-            <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
-            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.FIRE_AND_FORGET">
-              <propertyName xmi:type="utility:TranslatableString" key="Property.FIRE_AND_FORGET" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
-              <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.INCIDENT_AREA">
-                <propertyName xmi:type="utility:TranslatableString" key="Property.INCIDENT_AREA" bundleName="FailureHandlerWithErrorQueue" pluginId="MQToMQ-app"/>
-              </propertyDescriptor>
-            </propertyDescriptor>
-          </propertyDescriptor>
-        </propertyDescriptor>
-      </propertyDescriptor>
-    </propertyOrganizer>
+    <propertyOrganizer/>
     <stickyBoard/>
   </eClassifiers>
 </ecore:EPackage>

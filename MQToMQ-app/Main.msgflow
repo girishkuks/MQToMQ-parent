@@ -24,6 +24,21 @@
     <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LOGGER_NAME" name="LOGGER_NAME" defaultValueLiteral="ApplicationLogger">
       <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT_QUEUE" name="ALERT_QUEUE" defaultValueLiteral="ALERT">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT_QUEUE_MGR" name="ALERT_QUEUE_MGR" defaultValueLiteral="QMGR">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ALERT" name="ALERT" defaultValueLiteral="FALSE">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.FIRE_AND_FORGET" name="FIRE_AND_FORGET" defaultValueLiteral="FALSE">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.INCIDENT_AREA" name="INCIDENT_AREA" defaultValueLiteral="GAMS">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
     <translation xmi:type="utility:TranslatableString" key="Main" bundleName="Main" pluginId="MQToMQ-app"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj16/Main.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/MQToMQ-app/icons/full/obj30/Main.gif"/>
@@ -167,20 +182,35 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer>
-      <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.PROVIDER_QUEUE">
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.PROVIDER_QUEUE">
         <propertyName xmi:type="utility:TranslatableString" key="Property.PROVIDER_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
-        <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.REPLY_QUEUE">
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.REPLY_QUEUE">
           <propertyName xmi:type="utility:TranslatableString" key="Property.REPLY_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
-          <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.OUTPUT_QUEUE">
+          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.OUTPUT_QUEUE">
             <propertyName xmi:type="utility:TranslatableString" key="Property.OUTPUT_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
-            <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.REPLY_QUEUE_MGR">
+            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.REPLY_QUEUE_MGR">
               <propertyName xmi:type="utility:TranslatableString" key="Property.REPLY_QUEUE_MGR" bundleName="Main" pluginId="MQToMQ-app"/>
-              <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.OUTPUT_QUEUE_MGR">
+              <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.OUTPUT_QUEUE_MGR">
                 <propertyName xmi:type="utility:TranslatableString" key="Property.OUTPUT_QUEUE_MGR" bundleName="Main" pluginId="MQToMQ-app"/>
-                <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.PROVIDER_QUEUE_MGR">
+                <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.PROVIDER_QUEUE_MGR">
                   <propertyName xmi:type="utility:TranslatableString" key="Property.PROVIDER_QUEUE_MGR" bundleName="Main" pluginId="MQToMQ-app"/>
-                  <propertyDescriptor groupName="Group.MQ" configurable="true" userDefined="true" describedAttribute="Property.LOGGER_NAME">
+                  <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.LOGGER_NAME">
                     <propertyName xmi:type="utility:TranslatableString" key="Property.LOGGER_NAME" bundleName="Main" pluginId="MQToMQ-app"/>
+                    <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT_QUEUE">
+                      <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT_QUEUE" bundleName="Main" pluginId="MQToMQ-app"/>
+                      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT_QUEUE_MGR">
+                        <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT_QUEUE_MGR" bundleName="Main" pluginId="MQToMQ-app"/>
+                        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ALERT">
+                          <propertyName xmi:type="utility:TranslatableString" key="Property.ALERT" bundleName="Main" pluginId="MQToMQ-app"/>
+                          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.FIRE_AND_FORGET">
+                            <propertyName xmi:type="utility:TranslatableString" key="Property.FIRE_AND_FORGET" bundleName="Main" pluginId="MQToMQ-app"/>
+                            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.INCIDENT_AREA">
+                              <propertyName xmi:type="utility:TranslatableString" key="Property.INCIDENT_AREA" bundleName="Main" pluginId="MQToMQ-app"/>
+                            </propertyDescriptor>
+                          </propertyDescriptor>
+                        </propertyDescriptor>
+                      </propertyDescriptor>
+                    </propertyDescriptor>
                   </propertyDescriptor>
                 </propertyDescriptor>
               </propertyDescriptor>
