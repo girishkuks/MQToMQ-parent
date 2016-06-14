@@ -10,8 +10,14 @@
 	<packaging>pom</packaging>
 
 	 <properties>
-      	<scm.url>https://master@10.52.36.21:8443/r/iib/MQToMQ-parent.git</scm.url>
-     </properties>
+      		<scm.url>https://master@10.52.36.21:8443/r/iib/MQToMQ-parent.git</scm.url>
+	 </properties>
+	 
+	 <scm>
+    	   <url>scm:git:${scm.url}</url>
+	   <connection>scm:git:${scm.url}</connection>
+	   <developerConnection>scm:git:${scm.url}</developerConnection>
+    	</scm>
 
 	<modules>
 		<module>MQToMQ-java</module>
