@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.anz.api</groupId>
 		<artifactId>MQToMQ-parent</artifactId>
-		<version>0.0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>MQToMQ-testjava</artifactId>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>com.anz.api</groupId>
 			<artifactId>MQToMQ-java</artifactId>
-			<version>0.0.0.1-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

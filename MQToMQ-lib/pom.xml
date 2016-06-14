@@ -6,10 +6,20 @@
 	<parent>
 		<groupId>com.anz.api</groupId>
 		<artifactId>MQToMQ-parent</artifactId>
-		<version>0.0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>MQToMQ-lib</artifactId>
+	<properties>
+		<!--comment or uncomment mqsi.profile path specific to Operating System 
+			where you intend to build the Integration Project -->
+		<!--To trigger builds using DevOps continuous Integration Server POC Environment 
+			mqsi.profile must be set to Unix relative path -->
+		<!--Uncomment below tag when building in Unix Environment -->
+		<pathToMqsiProfileScript>${mqsi.profile}</pathToMqsiProfileScript>
+		<!--Uncomment below tag when building in Windows Environment -->
+		<!-- <mqsi.profile>c:\Program Files\IBM\IIB\10.0.0.4\server\bin\mqsiprofile.cmd</mqsi.profile> -->
+	</properties>
 	<packaging>iib-bar</packaging>
 
 	<profiles>
@@ -174,7 +184,7 @@
 		<dependency>
 	    		<groupId>com.anz</groupId>
 	   			<artifactId>anz-iib-commons-lib</artifactId>
-	   			<version>1.0-SNAPSHOT</version>
+	   			<version>1.0.0-SNAPSHOT</version>
 	    		<type>bar</type>
 				<scope>compile</scope>
 		</dependency>

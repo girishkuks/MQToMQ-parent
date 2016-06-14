@@ -4,17 +4,25 @@
 	<parent>
 		<groupId>com.anz.api</groupId>
 		<artifactId>MQToMQ-parent</artifactId>
-		<version>0.0.0.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>MQToMQ-app</artifactId>
-	<packaging>iib-bar</packaging>
-
 	<properties>
+		<!--comment or uncomment mqsi.profile path specific to Operating System 
+			where you intend to build the Integration Project -->
+		<!--To trigger builds using DevOps continuous Integration Server POC Environment 
+			mqsi.profile must be set to Unix relative path -->
+		<!--Uncomment below tag when building in Unix Environment -->
+		<pathToMqsiProfileScript>${mqsi.profile}</pathToMqsiProfileScript>
+		<!--Uncomment below tag when building in Windows Environment -->
+		<!-- <mqsi.profile>c:\Program Files\IBM\IIB\10.0.0.4\server\bin\mqsiprofile.cmd</mqsi.profile> -->
 		<log4j2.version>2.5</log4j2.version>
 		<org.springframework.version>4.1.7.RELEASE</org.springframework.version>
 	</properties>
-	
+	<packaging>iib-bar</packaging>
+
+
 	<profiles>
 		<profile>
 			<id>localdev</id>
@@ -25,7 +33,7 @@
 				<workspace>${basedir}/..</workspace>
 				<initialDeletes>**/*.jar</initialDeletes>
 				<unpackIibDependenciesIntoWorkspace>true</unpackIibDependenciesIntoWorkspace>
-				<pathToMqsiProfileScript>/root/IIB/iib-10.0.0.4/server/bin/mqsiprofile</pathToMqsiProfileScript>
+				<pathToMqsiProfileScript>${mqsi.profile}</pathToMqsiProfileScript>
 				<mqsiPrefixCommands>true</mqsiPrefixCommands>
 				<failOnInvalidProperties>true</failOnInvalidProperties>
 				<useClassloaders>true</useClassloaders>
